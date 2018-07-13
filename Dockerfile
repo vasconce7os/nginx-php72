@@ -3,7 +3,8 @@ RUN apk update && apk add build-base
 RUN apk add postgresql postgresql-dev \
   && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
   && docker-php-ext-install pdo_pgsql pgsql \
-  && docker-php-ext-install pdo_mysql
+  && docker-php-ext-install pdo_mysql \
+  && docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN apk add zlib-dev git zip \
   && docker-php-ext-install zip
 RUN set -xe \
